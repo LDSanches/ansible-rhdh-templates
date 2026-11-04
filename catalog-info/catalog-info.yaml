@@ -22,7 +22,8 @@ metadata:
     {%- endif %}
   annotations:
     backstage.io/techdocs-ref: dir:.
-    {%- if values.sourceControl == "gitlab.com" %}
+    {%- if values.sourceControl == "gitlab-gitlab.apps.ocp.nz9dw.sandbox1531.opentlc.com" %}
+    gitlab.com/instance: ${{ values.sourceControl }}
     gitlab.com/project-slug: ${{ values.repoUrl | projectSlug }}
     {%- elif values.sourceControl == "github.com" %}
     github.com/project-slug: ${{ values.repoUrl | projectSlug }}

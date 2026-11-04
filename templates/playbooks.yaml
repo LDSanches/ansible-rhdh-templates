@@ -27,16 +27,18 @@ spec:
           title: Select source control option
           type: string
           description: Select the source control option for your Ansible project.
-          default: github.com
+          default: gitlab-gitlab.apps.ocp.nz9dw.sandbox1531.opentlc.com
           enum:
-            - github.com
+            - gitlab-gitlab.apps.ocp.nz9dw.sandbox1531.opentlc.com
           enumNames:
-            - 'GitHub'
+            - 'GitLab'
         repoOwner:
-          title: Source code repository organization name or username
+          title: GitLab group or username
           type: string
-          description: The organization name or username of your source code repository. For example, “my-github-username”.
+          description: The existing GitLab group or username that will own the new repository. Do not use a URL. For example, “development”.
+          default: development
           maxLength: 100
+          pattern: '^[a-zA-Z0-9][a-zA-Z0-9_.-]*(/[a-zA-Z0-9][a-zA-Z0-9_.-]*)*$'
         repoName:
           title: Playbook repository name
           description: The name of the new playbook project repository. For example, “my-new-playbook-repo”.
@@ -112,7 +114,7 @@ spec:
 
     - id: publish
       name: Publish
-      action: publish:github
+      action: publish:gitlab
       input:
         description: ${{ parameters.description }}
         repoUrl: ${{ steps.ansible.output.repoUrl }}
